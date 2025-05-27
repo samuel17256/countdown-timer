@@ -1,0 +1,12 @@
+{
+  "name": "countdown-timer",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "nan": "npx tailwindcss -i ./src/input.css -o ./dist/style.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
