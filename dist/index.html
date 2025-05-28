@@ -1,17 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Countdown Timer</title>
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div
+      class="flex flex-col justify-center items-center text-center min-h-screen bg-violet-600"
+    >
+      <div class="bg-violet-900 py-4 px-4 rounded-md">
+        <h1 class="text-2xl font-bold text-white pb-2">countdown timer</h1>
 
-    <h1>countdown timer</h1>
+        <div>
+          <input
+            type="number"
+            id="input-number"
+            placeholder="input a time" class="rounded-md text-center py-1 bg-transparent border-solid border-2"
+          />
+          <button id="countBtn" class="bg-indigo-400 px-2 py-1 ml-1 rounded-md">count</button>
+        </div>
 
-    <div>
-        <input type="number" id="input-number">
-        <button id="countBtn">count</button>
+        <h2>This number is counting down in a minute</h2>
+        <div id="out" class="mt-2">00</div>
+      </div>
+      <p>my githut link : <a href="" class="underline">click me</a></p>
+
     </div>
-</body>
+
+
+    <script>
+      let countdown;
+      let timer;
+      let btnCount = document.getElementById("countBtn");
+      btnCount.addEventListener("click", (e) => {
+        e.preventDefault();
+        let input = document.getElementById("input-number");
+        let time = parseInt(input.value);
+
+        if (time <= 0) {
+          alert`enter a valid time`;
+        }
+        timer = time * 60;
+
+        startTimer();
+      });
+
+      function startTimer() {
+        countdown = setInterval(() => {
+          let minutes = Math.floor(timer / 60);
+          document.getElementById("out").textContent = `${minutes}`;
+          timer--;
+          if (timer < 0) {
+            clearInterval(countdown);
+            document.getElementById("out").textContent = "countdown stop here!";
+          }
+        }, 1000);
+        document.querySelector("input[type=number]").value = "";
+      }
+    </script>
+  </body>
 </html>
